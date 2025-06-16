@@ -7,7 +7,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background: #0a2342;
+      background: #6B839E;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,17 +24,17 @@
       height: 180px;
       object-fit: cover;
       border-radius: 12px;
-      transition: filter 0.5s ease;
+      transition: filter 0.7s ease, opacity 2s ease;
       box-shadow: none;
       filter: none;
     }
     .center-container img:hover {
-      -webkit-filter: drop-shadow(0px 30px 30px rgba(196, 196, 196, 0.8));
-      filter: drop-shadow(0px 30px 30px rgba(196, 196, 196, 0.8));
+      -webkit-filter: drop-shadow(0px 30px 30px rgba(255, 170, 30, 0.7));
+      filter: drop-shadow(0px 30px 30px rgba(255, 170, 30, 0.7));
       /*box-shadow: 0 8px 32px 0 rgba(168, 168, 168, 0.45);*/
     }
     .title {
-      color: #c4c4c4;
+      color: #27384D;
       font-size: 2.5rem;
       margin-top: 1.5rem;
       font-family: 'Tahoma', Arial, sans-serif;
@@ -45,7 +45,42 @@
 </head>
 <body>
   <div class="center-container">
-    <img src="logo.png" alt="Norrstuga logo">
+    <link rel="icon" type="image/png" href="assets/logo_alt_64.png"><!-- index.html -->
+    <img id="logo-img" src="assets/logo_1024.png" alt="Norrstuga logo">
+    <script>
+      const img = document.getElementById('logo-img');
+      const originalSrc = 'assets/logo_1024.png';
+      const hoverSrc = 'assets/logo_alt_1024.png';
+
+      img.addEventListener('mouseenter', () => {
+        img.style.opacity = 0;
+        setTimeout(() => {
+          img.src = hoverSrc;
+          img.style.opacity = 1;
+        }, 200);
+      });
+
+      img.addEventListener('mousemove', (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        // Scale the shadow offset
+        const shadowX = x / 4;
+        const shadowY = y / 4;
+        img.style.filter = `drop-shadow(${shadowX}px ${shadowY}px 30px rgba(255, 170, 30, 0.7))`;
+        img.style.webkitFilter = `drop-shadow(${shadowX}px ${shadowY}px 30px rgba(255, 170, 30, 0.7))`;
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.style.opacity = 0;
+        setTimeout(() => {
+          img.src = originalSrc;
+          img.style.opacity = 1;
+            img.style.filter = '';
+            img.style.webkitFilter = '';
+        }, 200);
+      });
+    </script>
     <div class="title">norrstuga</div>
   </div>
 </body>
