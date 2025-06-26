@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>norrstuga</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>norrstuga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
         body {
           margin: 0;
           height: 100vh;
@@ -58,70 +58,70 @@
             padding: 0.5rem;
           }
         }
-      </style>
-    </head>
-    <body>
-      <div class="center-container">
-        <link rel="icon" type="image/png" href="assets/logo_64.png">
-        <img id="logo-img" src="assets/logo_1024.png" alt="Norrstuga logo">
-          <script>
-              const img = document.getElementById('logo-img');
-              const originalSrc = 'assets/logo_1024.png';
-              const hoverSrc = 'assets/logo_alt_1024.png';
+    </style>
+</head>
+<body>
+<div class="center-container">
+    <link rel="icon" type="image/png" href="assets/logo_64.png">
+    <img id="logo-img" src="assets/logo_1024.png" alt="Norrstuga logo">
+    <script>
+        const img = document.getElementById('logo-img');
+        const originalSrc = 'assets/logo_1024.png';
+        const hoverSrc = 'assets/logo_alt_1024.png';
 
-              function setHoverState(x = 0, y = 30) {
-                img.style.opacity = 0;
-                setTimeout(() => {
-                  img.src = hoverSrc;
-                  img.style.opacity = 1;
-                  img.style.filter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
-                  img.style.webkitFilter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
-                }, 200);
-              }
+        function setHoverState(x = 0, y = 30) {
+          img.style.opacity = 0;
+          setTimeout(() => {
+            img.src = hoverSrc;
+            img.style.opacity = 1;
+            img.style.filter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
+            img.style.webkitFilter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
+          }, 200);
+        }
 
-              function updateShadow(x, y) {
-                img.style.filter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
-                img.style.webkitFilter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
-              }
+        function updateShadow(x, y) {
+          img.style.filter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
+          img.style.webkitFilter = `drop-shadow(${x}px ${y}px 30px rgba(255, 170, 30, 0.7))`;
+        }
 
-              function resetState() {
-                img.style.opacity = 0;
-                setTimeout(() => {
-                  img.src = originalSrc;
-                  img.style.opacity = 1;
-                  img.style.filter = '';
-                  img.style.webkitFilter = '';
-                }, 200);
-              }
+        function resetState() {
+          img.style.opacity = 0;
+          setTimeout(() => {
+            img.src = originalSrc;
+            img.style.opacity = 1;
+            img.style.filter = '';
+            img.style.webkitFilter = '';
+          }, 200);
+        }
 
-              img.addEventListener('mouseenter', () => setHoverState());
-              img.addEventListener('mousemove', (e) => {
-                const rect = img.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                updateShadow(x / 4, y / 4);
-              });
-              img.addEventListener('mouseleave', resetState);
+        img.addEventListener('mouseenter', () => setHoverState());
+        img.addEventListener('mousemove', (e) => {
+          const rect = img.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          updateShadow(x / 4, y / 4);
+        });
+        img.addEventListener('mouseleave', resetState);
 
-              // Touch support
-              img.addEventListener('touchstart', (e) => {
-                setHoverState();
-                e.preventDefault();
-              }, { passive: false });
+        // Touch support
+        img.addEventListener('touchstart', (e) => {
+          setHoverState();
+          e.preventDefault();
+        }, { passive: false });
 
-              img.addEventListener('touchmove', (e) => {
-                const touch = e.touches[0];
-                const rect = img.getBoundingClientRect();
-                const x = touch.clientX - rect.left - rect.width / 2;
-                const y = touch.clientY - rect.top - rect.height / 2;
-                updateShadow(x / 4, y / 4);
-                e.preventDefault();
-              }, { passive: false });
+        img.addEventListener('touchmove', (e) => {
+          const touch = e.touches[0];
+          const rect = img.getBoundingClientRect();
+          const x = touch.clientX - rect.left - rect.width / 2;
+          const y = touch.clientY - rect.top - rect.height / 2;
+          updateShadow(x / 4, y / 4);
+          e.preventDefault();
+        }, { passive: false });
 
-              img.addEventListener('touchend', resetState);
-              img.addEventListener('touchcancel', resetState);
-          </script>
-        <div class="title">norrstuga</div>
-      </div>
-    </body>
-    </html>
+        img.addEventListener('touchend', resetState);
+        img.addEventListener('touchcancel', resetState);
+    </script>
+    <div class="title">norrstuga</div>
+</div>
+</body>
+</html>
