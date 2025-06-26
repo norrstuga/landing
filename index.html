@@ -120,6 +120,9 @@
 
         img.addEventListener('touchend', resetState);
         img.addEventListener('touchcancel', resetState);
+        img.addEventListener('dblclick', () => {
+          location.href = 'https://apps.norrstuga.se/';
+        });
     </script>
     <div class="title">norrstuga</div>
 </div>
